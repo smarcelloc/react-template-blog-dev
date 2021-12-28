@@ -6,22 +6,22 @@ const theme = createTheme({
   typography: {
     fontFamily: 'IBM Plex Sans, Arial, sans-serif',
     h1: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
     },
     h2: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
     },
     h3: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
     },
     h4: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
     },
     h5: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
     },
     h6: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
     },
   },
   palette: {
