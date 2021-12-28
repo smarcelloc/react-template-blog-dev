@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 
+import Register from './Register';
 import SignIn from './SignIn';
 
 const Login: React.FC = () => {
@@ -22,12 +23,14 @@ const Login: React.FC = () => {
       <Typography variant="h5" component="h1">
         <Routes>
           <Route path="*" element="Sign In" />
+          <Route path="/register" element="Register" />
         </Routes>
       </Typography>
       <Container maxWidth="sm">
         <Box my={5}>
           <Routes>
             <Route path="*" element={<SignIn />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </Box>
         <Typography textAlign="center">
