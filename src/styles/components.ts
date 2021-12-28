@@ -6,7 +6,7 @@ const componentsTheme = (theme: Theme): Components => {
       styleOverrides: {
         a: {
           textDecoration: 'none',
-          color: theme.palette.primary.main,
+          color: 'inherit',
         },
       },
     },

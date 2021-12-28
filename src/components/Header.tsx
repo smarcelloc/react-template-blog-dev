@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Badge from '@mui/material/Badge';
@@ -16,9 +17,11 @@ const Header: React.FC = () => {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Typography variant="h6" component="h1">
-          Connect DEV
-        </Typography>
+        <Link to="/">
+          <Typography variant="h6" component="h1">
+            Connect DEV
+          </Typography>
+        </Link>
 
         <Box flexGrow={1} />
 
