@@ -19,18 +19,22 @@ const Header: React.FC = () => {
         <Typography variant="h6" component="h1">
           Connect DEV
         </Typography>
+
         <Box flexGrow={1} />
+
         <Button>New Post</Button>
-        <Box mx={2}>
-          <IconButton
-            size="large"
-            aria-label="show new notifications"
-            color="inherit">
-            <Badge variant="dot" overlap="circular" color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Box>
+
+        <Box mx={1} />
+        <IconButton
+          size="large"
+          aria-label="show new notifications"
+          color="inherit">
+          <Badge variant="dot" overlap="circular" color="error">
+            <NotificationsIcon />
+          </Badge>
+        </IconButton>
+
+        <Box mx={1} />
         <IconButton sx={{ p: 0 }}>
           <AvatarProfile alt="Remy Sharp" />
         </IconButton>

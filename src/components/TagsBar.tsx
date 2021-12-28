@@ -38,7 +38,7 @@ const TagsBar: React.FC = () => {
         <ListSubheader>Tags Top</ListSubheader>
         {tags.map(({ id, title }) => (
           <ListItemButton key={id}>
-            <Typography noWrap>{title}</Typography>
+            <Typography noWrap>#{title}</Typography>
           </ListItemButton>
         ))}
       </List>

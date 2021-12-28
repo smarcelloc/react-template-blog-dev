@@ -10,7 +10,7 @@ const MyButton = styled(Button)(({ theme }) => ({
   background: 'inherit',
 }));
 
-type Props = Omit<ButtonProps, 'color' | 'fullWidth'>;
+interface Props extends Omit<ButtonProps, 'color' | 'fullWidth'> {}
 
 const ButtonMore: React.FC<Props> = (props: Props) => {
   return <MyButton fullWidth color="inherit" {...props} />;
