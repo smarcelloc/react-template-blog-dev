@@ -1,3 +1,21 @@
 {
-  "extends": ["react-app", "eslint:recommended"]
+  "extends": ["react-app", "eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": ["prettier", "eslint-plugin-import-helpers"],
+  "rules": {
+    "prettier/prettier": "warn",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react/",
+          "/^@mui/(?!icons-material)/",
+          "/^@mui/icons-material/",
+          "module",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
 }
