@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -10,6 +9,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
+
+import AvatarProfile from './AvatarProfile';
 
 const Header: React.FC = () => {
   return (
@@ -31,7 +32,7 @@ const Header: React.FC = () => {
           </IconButton>
         </Box>
         <IconButton sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" />
+          <AvatarProfile alt="Remy Sharp" />
         </IconButton>
       </Toolbar>
     </AppBar>
