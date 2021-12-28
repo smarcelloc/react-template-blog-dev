@@ -3,8 +3,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import request from './utils/request';
+
+import './mocks';
 
 const App: React.FC = () => {
+  request.get('/api/test').then((response) => {
+    console.log(response.data);
+  });
+
   return (
     <BrowserRouter>
       <Routes>
