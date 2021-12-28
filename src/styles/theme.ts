@@ -1,5 +1,7 @@
 import { colors, createTheme } from '@mui/material';
 
+import componentsTheme from './components';
+
 const theme = createTheme({
   typography: {
     fontFamily: 'IBM Plex Sans, Arial, sans-serif',
@@ -39,5 +41,7 @@ const theme = createTheme({
     borderRadius: 2,
   },
 });
+
+theme.components = componentsTheme(theme);
 
 export default theme;
