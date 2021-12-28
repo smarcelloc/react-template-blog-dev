@@ -31,6 +31,12 @@ const componentsTheme = (theme: Theme): Components => {
       defaultProps: {
         color: 'inherit',
       },
+      styleOverrides: {
+        root: {
+          borderLeft: 'none',
+          borderRight: 'none',
+        },
+      },
     },
   };
 };
