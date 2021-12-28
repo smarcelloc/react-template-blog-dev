@@ -8,7 +8,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import MyLink from '../components/Link';
-import request, { isRequestError } from '../utils/request';
+import authService from '../services/authService';
+import { isRequestError } from '../utils/request';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     try {
       event.preventDefault();
-      await request.post('/api/auth', { email, password });
+      await authService.signIn(email, password);
       navigate('/');
     } catch (error: any) {
       if (isRequestError(error)) {
