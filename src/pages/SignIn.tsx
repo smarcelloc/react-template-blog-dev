@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import MyLink from '../components/Link';
-import request from '../utils/request';
+import request, { isRequestError } from '../utils/request';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +23,11 @@ const SignIn: React.FC = () => {
       await request.post('/api/auth', { email, password });
       navigate('/');
     } catch (error: any) {
-      setMessageError(error.message);
+      if (isRequestError(error)) {
+        setMessageError(error.response.data.message);
+      } else {
+        setMessageError(error.message);
+      }
     }
   };
 
