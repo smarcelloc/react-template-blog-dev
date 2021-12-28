@@ -27,3 +27,5 @@ mock.onPost('/api/auth').reply((req) => {
 
   return [200, { user }];
 });
+
+mock.onPost('/api/auth/token').reply(200, { user });

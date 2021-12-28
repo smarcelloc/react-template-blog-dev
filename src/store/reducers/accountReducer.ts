@@ -11,6 +11,11 @@ const accountReducer = (state = INITIAL_STATE, action: AccountActionProps) => {
         ...state,
         user: action.payload.user,
       };
+    case type.LOGIN_SILENT:
+      return {
+        ...state,
+        user: action.payload.user,
+      };
     default:
       return {
         ...state,

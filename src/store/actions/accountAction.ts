@@ -5,6 +5,7 @@ import authService from '../../services/authService';
 
 interface TypeAction {
   readonly LOGIN_SUCCESS: string;
+  readonly LOGIN_SILENT: string;
 }
 
 export interface AccountActionProps {
@@ -16,6 +17,7 @@ export interface AccountActionProps {
 
 export const type: TypeAction = {
   LOGIN_SUCCESS: '@ACCOUNT/LOGIN_SUCCESS',
+  LOGIN_SILENT: '@ACCOUNT/LOGIN_SILENT',
 };
 
 class AccountAction {
@@ -25,6 +27,19 @@ class AccountAction {
 
       dispatch({
         type: type.LOGIN_SUCCESS,
+        payload: {
+          user: data.user,
+        },
+      });
+    };
+  };
+
+  setUser = () => {
+    return async (dispatch: Dispatch<AccountActionProps>) => {
+      const data = await authService.signInWithToken();
+
+      dispatch({
+        type: type.LOGIN_SILENT,
         payload: {
           user: data.user,
         },
