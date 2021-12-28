@@ -2,6 +2,13 @@ import { Components, Theme } from '@mui/material';
 
 const componentsTheme = (theme: Theme): Components => {
   return {
+    MuiCssBaseline: {
+      styleOverrides: {
+        a: {
+          textDecoration: 'none',
+        },
+      },
+    },
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
