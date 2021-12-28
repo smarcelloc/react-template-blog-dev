@@ -11,6 +11,18 @@ const componentsTheme = (theme: Theme): Components => {
       defaultProps: {
         color: 'primary',
         variant: 'contained',
+        disableElevation: true,
+      },
+    },
+    MuiPaper: {
+      defaultProps: {
+        variant: 'outlined',
+        elevation: 0,
+      },
+    },
+    MuiAppBar: {
+      defaultProps: {
+        color: 'inherit',
       },
     },
   };

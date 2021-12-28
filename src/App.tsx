@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { Button } from '@mui/material';
+import Home from './pages/Home';
 
 const App: React.FC = () => {
-  return <Button>Hello World</Button>;
+  return <Home />;
 };
 
 export default App;
