@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
@@ -8,11 +9,12 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import MyLink from '../components/Link';
-import authService from '../services/authService';
+import accountAction from '../store/actions/accountAction';
 import { isRequestError } from '../utils/request';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = React.useState('john@example.com');
   const [password, setPassword] = React.useState('password@123');
@@ -21,7 +23,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     try {
       event.preventDefault();
-      await authService.signIn(email, password);
+      await dispatch(accountAction.signIn(email, password));
       navigate('/');
     } catch (error: any) {
       if (isRequestError(error)) {
