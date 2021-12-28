@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+
+import MyLink from '../components/Link';
 
 const Register: React.FC = () => {
   const [name, setName] = React.useState('');
@@ -84,7 +85,7 @@ const Register: React.FC = () => {
         </Button>
       </form>
 
-      <Link to="/login">Back to Login</Link>
+      <MyLink to="/login">Back to Login</MyLink>
     </>
   );
 };

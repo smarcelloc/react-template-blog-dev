@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
+
+import MyLink from '../components/Link';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -66,7 +68,7 @@ const SignIn: React.FC = () => {
         </Button>
       </form>
 
-      <Link to="/login/register">Create a account</Link>
+      <MyLink to="/login/register">Create a account</MyLink>
     </>
   );
 };
