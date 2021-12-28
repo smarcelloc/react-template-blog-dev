@@ -5,22 +5,31 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import MyLink from '../components/Link';
+import request from '../utils/request';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = React.useState('john@example.com');
   const [password, setPassword] = React.useState('password@123');
+  const [messageError, setMessageError] = React.useState('');
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    navigate('/');
+    try {
+      event.preventDefault();
+      await request.post('/api/auth', { email, password });
+      navigate('/');
+    } catch (error: any) {
+      setMessageError(error.message);
+    }
   };
 
   return (
     <>
+      <Typography color="error.main">{messageError}</Typography>
       <form>
         <TextField
           id="email"
