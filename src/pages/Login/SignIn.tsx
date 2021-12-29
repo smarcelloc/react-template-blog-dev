@@ -8,9 +8,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-import MyLink from '../components/Link';
-import accountAction from '../store/actions/accountAction';
-import { isRequestError } from '../utils/request';
+import MyLink from '../../components/Link';
+import accountAction from '../../store/actions/accountAction';
+import { isRequestError } from '../../utils/request';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
