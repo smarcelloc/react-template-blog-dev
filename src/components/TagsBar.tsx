@@ -11,26 +11,27 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
 import { TagsProps } from '../interfaces';
+import request from '../utils/request';
 import ButtonMore from './ButtonMore';
 
-const tags: TagsProps[] = [
-  {
-    id: 1,
-    title: 'React JS',
-  },
-  {
-    id: 2,
-    title: 'JS',
-  },
-  {
-    id: 3,
-    title: 'CSS',
-  },
-];
+interface RequestProps {
+  tags: TagsProps[];
+}
 
 const TagsBar: React.FC = () => {
   const account = useSelector((state) => state.account);
   const isAuthenticated = !!account.user;
+
+  const [tags, setTags] = React.useState<TagsProps[]>([]);
+
+  const getTags = React.useCallback(async () => {
+    const response = await request.get<RequestProps>('/api/tags/top');
+    setTags(response.data.tags);
+  }, [setTags]);
+
+  React.useEffect(() => {
+    getTags();
+  }, [getTags]);
 
   return (
     <Paper>
