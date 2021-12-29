@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Page404 from './404';
 import Feeds from './Feeds';
 import PostNew from './Post/New';
+import PostShow from './Post/Show';
 
 const Home: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
         <Routes>
           <Route path="/" element={<Feeds />} />
           <Route path="/post/new" element={<PostNew />} />
+          <Route path="/post/:id" element={<PostShow />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Box>

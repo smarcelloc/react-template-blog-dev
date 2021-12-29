@@ -59,14 +59,14 @@ const MarkdownStyle = styled('div')(({ theme }) => ({
 }));
 
 interface Props {
-  text: string;
+  text: string | Promise<string>;
 }
 
 const Markdown: React.FC<Props> = ({ text }: Props) => {
   return (
     <MarkdownStyle>
       <ReactMarkdown skipHtml components={{ ...syntaxHighlighter }}>
-        {text}
+        {text.toString()}
       </ReactMarkdown>
     </MarkdownStyle>
   );

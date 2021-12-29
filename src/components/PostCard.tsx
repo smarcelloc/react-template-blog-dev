@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ClampLines from 'react-clamp-lines';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { styled } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -43,12 +44,18 @@ const CardProfile = styled(CardHeader)({
 interface Props extends PostProps {}
 
 const PostCard: React.FC<Props> = (props: Props) => {
+  const navigate = useNavigate();
+
   const account = useSelector((state) => state.account);
   const isAuthenticated = !!account.user;
 
+  const handleClick = () => {
+    navigate(`/post/${props.id}`);
+  };
+
   return (
     <MyCard>
-      <CardActionArea>
+      <CardActionArea onClick={handleClick}>
         <CardMedia
           component="img"
           height="200"

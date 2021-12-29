@@ -1,10 +1,11 @@
+const contentMarkdown = `
 # Welcome to StackEdit!
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 
-```js
-console.log('It works!');
-```
+\`\`\`js
+console.log(x);
+\`\`\`
 
 # Files
 
@@ -30,3 +31,6 @@ You can publish your file by opening the **Publish** sub-menu and by clicking **
 After publishing, StackEdit keeps your file linked to that publication which makes it easy for you to re-publish it. Once you have modified your file and you want to update your publication, click on the **Publish now** button in the navigation bar.
 
 > **Note:** The **Publish now** button is disabled if your file has not been published yet.
+`;
+
+export default contentMarkdown;

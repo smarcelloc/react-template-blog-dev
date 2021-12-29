@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { TagsProps } from '../interfaces';
+import contentMarkdown from '../mocks/content';
 
 interface PostContextProps {
   image: ArrayBuffer | string | null;
@@ -32,7 +33,7 @@ const PostProvider: React.FC<Props> = ({ children }: Props) => {
   const [image, setImage] = React.useState<ArrayBuffer | string | null>(null);
   const [title, setTitle] = React.useState<string>('Title');
   const [tags, setTags] = React.useState<TagsProps[]>([]);
-  const [markdown, setMarkdown] = React.useState<string>('Hello World !!!');
+  const [markdown, setMarkdown] = React.useState<string>(contentMarkdown);
 
   return (
     <PostContext.Provider

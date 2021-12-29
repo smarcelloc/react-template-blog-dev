@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 import { PostProps } from '../interfaces';
-import content from './content.md';
+import contentMarkdown from './content';
 
 const posts: PostProps[] = [
   {
@@ -9,7 +9,7 @@ const posts: PostProps[] = [
     title:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     time: moment().subtract(2, 'hours').toDate().getTime(),
-    content: content,
+    content: contentMarkdown,
     image:
       'https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825__480.jpg',
     author: {
@@ -31,7 +31,7 @@ const posts: PostProps[] = [
     },
     tags: ['js', 'nextjs'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const posts: PostProps[] = [
     },
     tags: ['php', 'laravel'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 6,
@@ -90,7 +90,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: true,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 7,
@@ -105,7 +105,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 8,
@@ -118,7 +118,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: true,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 9,
@@ -133,7 +133,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 10,
@@ -147,7 +147,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 11,
@@ -161,7 +161,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 12,
@@ -175,7 +175,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 13,
@@ -190,7 +190,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: true,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 14,
@@ -204,7 +204,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 15,
@@ -218,7 +218,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: true,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 16,
@@ -233,7 +233,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: true,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 17,
@@ -247,7 +247,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 18,
@@ -261,7 +261,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: true,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 19,
@@ -276,7 +276,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
   {
     id: 20,
@@ -290,7 +290,7 @@ const posts: PostProps[] = [
     },
     tags: ['react', 'nextjs', 'material-ui'],
     isFavorite: false,
-    content: content,
+    content: contentMarkdown,
   },
 ];
 
