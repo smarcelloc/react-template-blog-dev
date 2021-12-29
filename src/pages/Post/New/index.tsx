@@ -7,6 +7,9 @@ import Tabs from '@mui/material/Tabs';
 
 import Tab from '../../../components/Tab';
 import TabPanel from '../../../components/TabPanel';
+import { PostProvider } from '../../../context/PostContext';
+import Form from './Form';
+import Preview from './Preview';
 
 const PostNew: React.FC = () => {
   const [value, setValue] = React.useState(0);
@@ -16,26 +19,28 @@ const PostNew: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md">
-      <Paper sx={{ borderRadius: 0 }}>
-        <Tabs
-          variant="fullWidth"
-          value={value}
-          onChange={handleChange}
-          aria-label="tabs new post">
-          <Tab label="Editor" index={0} />
-          <Tab label="Preview" index={1} />
-        </Tabs>
-      </Paper>
-      <Box mt={2}>
-        <TabPanel value={value} index={0}>
-          Form
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Preview
-        </TabPanel>
-      </Box>
-    </Container>
+    <PostProvider>
+      <Container maxWidth="md">
+        <Paper sx={{ borderRadius: 0 }}>
+          <Tabs
+            variant="fullWidth"
+            value={value}
+            onChange={handleChange}
+            aria-label="tabs new post">
+            <Tab label="Editor" index={0} />
+            <Tab label="Preview" index={1} />
+          </Tabs>
+        </Paper>
+        <Box mt={2}>
+          <TabPanel value={value} index={0}>
+            <Form />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <Preview />
+          </TabPanel>
+        </Box>
+      </Container>
+    </PostProvider>
   );
 };
 

@@ -17,9 +17,12 @@
     "react": "^17.0.2",
     "react-clamp-lines": "^3.0.2",
     "react-dom": "^17.0.2",
+    "react-dropzone": "^11.4.2",
+    "react-markdown": "^7.1.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-syntax-highlighter": "^15.4.5",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "typescript": "^4.4.2"
@@ -45,6 +48,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "axios-mock-adapter": "^1.20.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import-helpers": "^1.2.0",
