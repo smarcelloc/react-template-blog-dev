@@ -8,10 +8,27 @@ import Hidden from '@mui/material/Hidden';
 import PostCard from '../components/PostCard';
 import ProfileBar from '../components/ProfileBar';
 import TagsBar from '../components/TagsBar';
+import { PostProps } from '../interfaces';
+import request from '../utils/request';
+
+interface RequestProps {
+  posts: PostProps[];
+}
 
 const Feeds: React.FC = () => {
   const account = useSelector((state) => state.account);
   const isAuthenticated = !!account.user;
+
+  const [posts, setPosts] = React.useState<PostProps[]>([]);
+
+  const getPosts = React.useCallback(async () => {
+    const response = await request.get<RequestProps>('/api/posts');
+    setPosts(response.data.posts);
+  }, [setPosts]);
+
+  React.useEffect(() => {
+    getPosts();
+  }, [getPosts]);
 
   return (
     <Container>
@@ -29,21 +46,11 @@ const Feeds: React.FC = () => {
           </Grid>
         </Hidden>
         <Grid container item xs={12} md={9} spacing={2}>
-          <Grid item sm={6}>
-            <PostCard />
-          </Grid>
-          <Grid item sm={6}>
-            <PostCard />
-          </Grid>
-          <Grid item sm={6}>
-            <PostCard />
-          </Grid>
-          <Grid item sm={6}>
-            <PostCard />
-          </Grid>
-          <Grid item sm={6}>
-            <PostCard />
-          </Grid>
+          {posts.map((props) => (
+            <Grid item sm={6} key={props.id}>
+              <PostCard {...props} />
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Container>

@@ -18,6 +18,9 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAddOutlined';
 import ShareIcon from '@mui/icons-material/ShareOutlined';
 
+import moment from 'moment';
+
+import { PostProps } from '../interfaces';
 import AvatarProfile from './AvatarProfile';
 
 const MyCard = styled(Card)({
@@ -37,7 +40,9 @@ const CardProfile = styled(CardHeader)({
   paddingBottom: 0,
 });
 
-const PostCard: React.FC = () => {
+interface Props extends PostProps {}
+
+const PostCard: React.FC<Props> = (props: Props) => {
   const account = useSelector((state) => state.account);
   const isAuthenticated = !!account.user;
 
@@ -47,18 +52,21 @@ const PostCard: React.FC = () => {
         <CardMedia
           component="img"
           height="200"
-          image="https://mui.com/static/images/cards/paella.jpg"
-          alt="picture of title"
+          image={props.image}
+          alt={`picture of ${props.title}`}
         />
         <CardProfile
           avatar={
             <AvatarProfile
               size="small"
               aria-label="recipe"
-              user={{ name: 'Joe John' }}
+              user={{
+                name: props.author.name || '',
+                avatar: props.author.avatar,
+              }}
             />
           }
-          title="Joe Jonh"
+          title={props.author.name}
         />
         <CardContent>
           <Typography variant="subtitle1" fontWeight="bold" component="h3">
@@ -66,9 +74,7 @@ const PostCard: React.FC = () => {
               id="postTitle"
               lines={2}
               buttons={false}
-              text="Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book."
+              text={props.title}
             />
           </Typography>
         </CardContent>
@@ -77,7 +83,7 @@ const PostCard: React.FC = () => {
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="body2" color="text.secondary">
-              Ago 30 days
+              {moment(props.time).fromNow()}
             </Typography>
           </Grid>
           <Grid item>
@@ -87,6 +93,7 @@ const PostCard: React.FC = () => {
                 icon={<BookmarkAddIcon />}
                 checkedIcon={<BookmarkIcon />}
                 color="default"
+                defaultChecked={props.isFavorite}
               />
             )}
             <IconButton aria-label="share the post">

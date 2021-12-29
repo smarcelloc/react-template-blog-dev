@@ -22,7 +22,7 @@ export interface PostProps {
   content?: string;
   image: string;
   author: Pick<UserProps, 'name' | 'avatar'>;
-  tags?: Array<TagsProps>;
+  tags?: Array<string>;
   isFavorite: boolean;
 }
 
