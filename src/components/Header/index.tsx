@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
 
 import AppBar from '@mui/material/AppBar';
 import Badge from '@mui/material/Badge';
@@ -10,12 +9,10 @@ import Toolbar from '@mui/material/Toolbar';
 
 import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 
-import AvatarProfile from '../AvatarProfile';
 import Logo from './Logo';
+import MenuProfile from './MenuProfile';
 
 const Header: React.FC = () => {
-  const account = useSelector((state) => state.account);
-
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -32,15 +29,7 @@ const Header: React.FC = () => {
           </Badge>
         </IconButton>
         <Box mx={1} />
-        <IconButton sx={{ p: 0 }}>
-          <AvatarProfile
-            user={{
-              name: account.user?.name ?? '',
-              avatar: account.user?.avatar,
-            }}
-            alt="Remy Sharp"
-          />
-        </IconButton>
+        <MenuProfile />
       </Toolbar>
     </AppBar>
   );

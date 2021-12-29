@@ -35,11 +35,11 @@ const MyAvatar = styled(Avatar)<PropsAvatarStyled>(
 );
 
 const AvatarProfile: React.FC<Props> = ({ user, src, ...rest }: Props) => {
-  if (user && user.avatar) {
+  if (user?.avatar) {
     return <MyAvatar src={user.avatar} {...rest} />;
   }
 
-  if (user && user.name) {
+  if (user?.name) {
     const firstName = user.name.split(' ')[0];
 
     return (
