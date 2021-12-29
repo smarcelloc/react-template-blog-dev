@@ -15,7 +15,7 @@ import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 import AvatarProfile from './AvatarProfile';
 
 const Header: React.FC = () => {
-  const account = useSelector<any>((state) => state.account);
+  const account = useSelector((state) => state.account);
 
   return (
     <AppBar position="sticky">
@@ -42,7 +42,13 @@ const Header: React.FC = () => {
 
         <Box mx={1} />
         <IconButton sx={{ p: 0 }}>
-          <AvatarProfile user={account?.user} alt="Remy Sharp" />
+          <AvatarProfile
+            user={{
+              name: account.user?.name ?? '',
+              avatar: account.user?.avatar,
+            }}
+            alt="Remy Sharp"
+          />
         </IconButton>
       </Toolbar>
     </AppBar>
