@@ -38,7 +38,7 @@ const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 2,
+    borderRadius: 12,
   },
 });
 
