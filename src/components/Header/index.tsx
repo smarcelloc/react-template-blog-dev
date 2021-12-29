@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,14 +12,25 @@ import MenuProfile from './MenuProfile';
 import PopoverNotifications from './PopoverNotifications';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+
+  const account = useSelector((state) => state.account);
+  const isAuthenticated = !!account.user;
+
+  const handleClickNewPost = () => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  };
+
   return (
     <AppBar position="sticky">
       <Toolbar>
         <Logo />
         <Box flexGrow={1} />
-        <Button>New Post</Button>
+        <Button onClick={handleClickNewPost}>New Post</Button>
         <Box mx={1} />
-        <PopoverNotifications />
+        {isAuthenticated && <PopoverNotifications />}
         <Box mx={1} />
         <MenuProfile />
       </Toolbar>

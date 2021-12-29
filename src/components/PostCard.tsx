@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ClampLines from 'react-clamp-lines';
+import { useSelector } from 'react-redux';
 
 import { styled } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -37,6 +38,9 @@ const CardProfile = styled(CardHeader)({
 });
 
 const PostCard: React.FC = () => {
+  const account = useSelector((state) => state.account);
+  const isAuthenticated = !!account.user;
+
   return (
     <MyCard>
       <CardActionArea>
@@ -77,12 +81,14 @@ const PostCard: React.FC = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <Checkbox
-              inputProps={{ 'aria-label': 'add to favorites' }}
-              icon={<BookmarkAddIcon />}
-              checkedIcon={<BookmarkIcon />}
-              color="default"
-            />
+            {isAuthenticated && (
+              <Checkbox
+                inputProps={{ 'aria-label': 'add to favorites' }}
+                icon={<BookmarkAddIcon />}
+                checkedIcon={<BookmarkIcon />}
+                color="default"
+              />
+            )}
             <IconButton aria-label="share the post">
               <ShareIcon />
             </IconButton>

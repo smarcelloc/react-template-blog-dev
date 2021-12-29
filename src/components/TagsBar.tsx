@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -27,13 +29,20 @@ const tags: TagsProps[] = [
 ];
 
 const TagsBar: React.FC = () => {
+  const account = useSelector((state) => state.account);
+  const isAuthenticated = !!account.user;
+
   return (
     <Paper>
-      <Box p={1}>
-        <Button fullWidth color="secondary" variant="outlined">
-          Create new account
-        </Button>
-      </Box>
+      {!isAuthenticated && (
+        <Box p={1}>
+          <Link to="/login">
+            <Button fullWidth color="secondary" variant="outlined">
+              Create new account
+            </Button>
+          </Link>
+        </Box>
+      )}
       <List>
         <ListSubheader>Tags Top</ListSubheader>
         {tags.map(({ id, title }) => (
