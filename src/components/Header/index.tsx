@@ -18,7 +18,9 @@ const Header: React.FC = () => {
   const isAuthenticated = !!account.user;
 
   const handleClickNewPost = () => {
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
+      navigate('/post/new');
+    } else {
       navigate('/login');
     }
   };
