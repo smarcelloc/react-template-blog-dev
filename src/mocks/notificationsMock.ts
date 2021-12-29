@@ -26,7 +26,7 @@ const notifications: NotificationProps[] = [
     createdAt: moment().subtract(3, 'days').toDate().getTime(),
   },
   {
-    id: '5e8883fca0e8612044248ecf',
+    id: '5e8883fca4e8612045278ecf',
     title: 'New followers',
     description: '2 devs started following you',
     type: 'connection',
