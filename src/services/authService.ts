@@ -8,7 +8,7 @@ interface RequestProps {
 const ACCESS_TOKEN = 'accessToken';
 
 class AuthService {
-  signIn = (email: string, password: string): Promise<RequestProps> => {
+  public signIn = (email: string, password: string): Promise<RequestProps> => {
     return new Promise((resolve, reject) => {
       request
         .post<RequestProps>('/api/auth', { email, password })
@@ -24,7 +24,7 @@ class AuthService {
     });
   };
 
-  signInWithToken = (): Promise<RequestProps> => {
+  public signInWithToken = (): Promise<RequestProps> => {
     return new Promise((resolve, reject) => {
       request
         .post<RequestProps>('/api/auth/token')
@@ -33,16 +33,24 @@ class AuthService {
     });
   };
 
-  isAuthenticated = () => {
+  public signOut = () => {
+    this.removeToken();
+  };
+
+  public isAuthenticated = () => {
     return !!this.getToken();
   };
 
-  setToken = (token: string) => {
+  private setToken = (token: string) => {
     localStorage.setItem(ACCESS_TOKEN, token);
   };
 
-  getToken = () => {
+  private getToken = () => {
     return localStorage.getItem(ACCESS_TOKEN);
+  };
+
+  private removeToken = () => {
+    localStorage.removeItem(ACCESS_TOKEN);
   };
 }
 

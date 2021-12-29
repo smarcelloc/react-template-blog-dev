@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -12,20 +13,35 @@ import LogoutIcon from '@mui/icons-material/LogoutOutlined';
 import PersonIcon from '@mui/icons-material/PersonOutline';
 import SettingsIcon from '@mui/icons-material/SettingsOutlined';
 
+import accountAction from '../../store/actions/accountAction';
 import AvatarProfile from '../AvatarProfile';
 
 const MenuProfile: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const account = useSelector((state) => state.account);
+  const isAuthenticated = !!account.user;
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = !!anchorEl;
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    if (isAuthenticated) {
+      setAnchorEl(event.currentTarget);
+    } else {
+      navigate('/login');
+    }
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSignOut = async () => {
+    handleClose();
+    await dispatch(accountAction.signOut());
+    navigate('/');
   };
 
   return (
@@ -62,7 +78,7 @@ const MenuProfile: React.FC = () => {
           <ListItemText>Settings</ListItemText>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleSignOut}>
           <ListItemIcon>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>

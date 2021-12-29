@@ -6,6 +6,7 @@ import authService from '../../services/authService';
 interface TypeAction {
   readonly LOGIN_SUCCESS: string;
   readonly LOGIN_SILENT: string;
+  readonly SIGN_OUT: string;
 }
 
 export interface AccountActionProps {
@@ -18,6 +19,7 @@ export interface AccountActionProps {
 export const type: TypeAction = {
   LOGIN_SUCCESS: '@ACCOUNT/LOGIN_SUCCESS',
   LOGIN_SILENT: '@ACCOUNT/LOGIN_SILENT',
+  SIGN_OUT: '@ACCOUNT/SIGN_OUT',
 };
 
 class AccountAction {
@@ -42,6 +44,19 @@ class AccountAction {
         type: type.LOGIN_SILENT,
         payload: {
           user: data.user,
+        },
+      });
+    };
+  };
+
+  signOut = () => {
+    return async (dispatch: Dispatch<AccountActionProps>) => {
+      await authService.signOut();
+
+      dispatch({
+        type: type.SIGN_OUT,
+        payload: {
+          user: null,
         },
       });
     };
