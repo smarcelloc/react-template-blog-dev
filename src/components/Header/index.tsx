@@ -1,16 +1,13 @@
 import * as React from 'react';
 
 import AppBar from '@mui/material/AppBar';
-import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-
-import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 
 import Logo from './Logo';
 import MenuProfile from './MenuProfile';
+import PopoverNotifications from './PopoverNotifications';
 
 const Header: React.FC = () => {
   return (
@@ -20,14 +17,7 @@ const Header: React.FC = () => {
         <Box flexGrow={1} />
         <Button>New Post</Button>
         <Box mx={1} />
-        <IconButton
-          size="large"
-          aria-label="show new notifications"
-          color="inherit">
-          <Badge variant="dot" overlap="circular" color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
+        <PopoverNotifications />
         <Box mx={1} />
         <MenuProfile />
       </Toolbar>
