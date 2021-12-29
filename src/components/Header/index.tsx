@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Badge from '@mui/material/Badge';
@@ -8,11 +7,11 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 
 import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 
-import AvatarProfile from './AvatarProfile';
+import AvatarProfile from '../AvatarProfile';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
   const account = useSelector((state) => state.account);
@@ -20,16 +19,9 @@ const Header: React.FC = () => {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Link to="/">
-          <Typography variant="h6" component="h1">
-            Connect DEV
-          </Typography>
-        </Link>
-
+        <Logo />
         <Box flexGrow={1} />
-
         <Button>New Post</Button>
-
         <Box mx={1} />
         <IconButton
           size="large"
@@ -39,7 +31,6 @@ const Header: React.FC = () => {
             <NotificationsIcon />
           </Badge>
         </IconButton>
-
         <Box mx={1} />
         <IconButton sx={{ p: 0 }}>
           <AvatarProfile
