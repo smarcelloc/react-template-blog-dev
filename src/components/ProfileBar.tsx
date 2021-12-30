@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -32,7 +33,9 @@ const ProfileBar: React.FC = () => {
           {account.user?.totalPost} Post made
         </Typography>
       </Box>
-      <ButtonMore>My Account</ButtonMore>
+      <Link to="/profile">
+        <ButtonMore>My Account</ButtonMore>
+      </Link>
     </Paper>
   );
 };
