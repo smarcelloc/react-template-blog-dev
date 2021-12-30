@@ -19,9 +19,9 @@ import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 import PostAddIcon from '@mui/icons-material/PostAddOutlined';
 import VisibilityIcon from '@mui/icons-material/VisibilityOutlined';
 
-import ButtonMore from '../../components/ButtonMore';
 import { NotificationProps } from '../../interfaces';
 import notificationsAction from '../../store/actions/notificationsAction';
+import ButtonMore from '../ButtonMore';
 
 const IconsNotification = styled(Avatar)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
@@ -62,7 +62,7 @@ const ItemNotification = (notification: NotificationProps) => {
   );
 };
 
-const PopoverNotifications: React.FC = () => {
+const Notifications: React.FC = () => {
   const dispatch = useDispatch();
   const notifications = useSelector(
     (state) => state.notifications.notifications
@@ -92,7 +92,7 @@ const PopoverNotifications: React.FC = () => {
         aria-controls="popover-notifications"
         aria-haspopup="true"
         onClick={handleOpen}>
-        <Badge variant="dot" color="error" invisible={false}>
+        <Badge variant="dot" overlap="circular" color="error" invisible={false}>
           <NotificationsIcon />
         </Badge>
       </IconButton>
@@ -125,4 +125,4 @@ const PopoverNotifications: React.FC = () => {
   );
 };
 
-export default PopoverNotifications;
+export default Notifications;

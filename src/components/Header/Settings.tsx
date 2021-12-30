@@ -12,7 +12,11 @@ import Switch from '@mui/material/Switch';
 
 import SettingsIcon from '@mui/icons-material/SettingsOutlined';
 
-const PopoverSettings: React.FC = () => {
+import { useSettings } from '../../context/SettingsContext';
+
+const Settings: React.FC = () => {
+  const context = useSettings();
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const isOpen = !!anchorEl;
 
@@ -55,7 +59,15 @@ const PopoverSettings: React.FC = () => {
           <Divider />
           <ListItem>
             <FormGroup>
-              <FormControlLabel control={<Switch />} label="Theme Dark" />
+              <FormControlLabel
+                onClick={() =>
+                  context.saveSettings({ darkMode: !context.settings.darkMode })
+                }
+                control={
+                  <Switch checked={context.settings.darkMode ?? false} />
+                }
+                label="Theme Dark"
+              />
             </FormGroup>
           </ListItem>
         </List>
@@ -64,4 +76,4 @@ const PopoverSettings: React.FC = () => {
   );
 };
 
-export default PopoverSettings;
+export default Settings;
