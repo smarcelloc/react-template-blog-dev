@@ -60,7 +60,7 @@ const Settings: React.FC = () => {
           <ListItem>
             <FormGroup>
               <FormControlLabel
-                onClick={() =>
+                onChange={() =>
                   context.saveSettings({ darkMode: !context.settings.darkMode })
                 }
                 control={

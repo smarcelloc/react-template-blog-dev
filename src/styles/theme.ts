@@ -1,6 +1,10 @@
-import { colors, createTheme } from '@mui/material';
+import { createTheme } from '@mui/material';
 
+import settingsService from '../services/settingsService';
 import componentsTheme from './components';
+import paletteTheme from './palette';
+
+const settings = settingsService.getSettings();
 
 const theme = createTheme({
   typography: {
@@ -24,19 +28,7 @@ const theme = createTheme({
       fontWeight: 'bold',
     },
   },
-  palette: {
-    mode: 'light',
-    primary: {
-      main: colors.indigo.A400,
-      light: colors.indigo.A200,
-      dark: colors.indigo.A700,
-    },
-    secondary: {
-      main: colors.orange.A700,
-      light: colors.orange.A200,
-      dark: colors.orange[900],
-    },
-  },
+  palette: paletteTheme(settings.darkMode),
   shape: {
     borderRadius: 12,
   },

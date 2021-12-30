@@ -33,3 +33,7 @@ export interface NotificationProps {
   type: string;
   createdAt: number;
 }
+
+export interface SettingsProps {
+  darkMode: boolean;
+}
