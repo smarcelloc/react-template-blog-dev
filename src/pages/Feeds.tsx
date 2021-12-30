@@ -46,9 +46,9 @@ const Feeds: React.FC = () => {
           </Grid>
         </Hidden>
         <Grid container item xs={12} md={9} spacing={2}>
-          {posts.map((props) => (
-            <Grid item sm={6} key={props.id}>
-              <PostCard {...props} />
+          {posts.map((post) => (
+            <Grid item sm={6} key={post.id}>
+              <PostCard post={post} />
             </Grid>
           ))}
         </Grid>

@@ -41,16 +41,18 @@ const CardProfile = styled(CardHeader)({
   paddingBottom: 0,
 });
 
-interface Props extends PostProps {}
+interface Props {
+  post: PostProps;
+}
 
-const PostCard: React.FC<Props> = (props: Props) => {
+const PostCard: React.FC<Props> = ({ post }: Props) => {
   const navigate = useNavigate();
 
   const account = useSelector((state) => state.account);
   const isAuthenticated = !!account.user;
 
   const handleClick = () => {
-    navigate(`/post/${props.id}`);
+    navigate(`/post/${post.id}`);
   };
 
   return (
@@ -59,8 +61,8 @@ const PostCard: React.FC<Props> = (props: Props) => {
         <CardMedia
           component="img"
           height="200"
-          image={props.image}
-          alt={`picture of ${props.title}`}
+          image={post.image}
+          alt={`picture of ${post.title}`}
         />
         <CardProfile
           avatar={
@@ -68,12 +70,12 @@ const PostCard: React.FC<Props> = (props: Props) => {
               size="small"
               aria-label="recipe"
               user={{
-                name: props.author.name || '',
-                avatar: props.author.avatar,
+                name: post.author.name || '',
+                avatar: post.author.avatar,
               }}
             />
           }
-          title={props.author.name}
+          title={post.author.name}
         />
         <CardContent>
           <Typography variant="subtitle1" fontWeight="bold" component="h3">
@@ -81,7 +83,7 @@ const PostCard: React.FC<Props> = (props: Props) => {
               id="postTitle"
               lines={2}
               buttons={false}
-              text={props.title}
+              text={post.title}
             />
           </Typography>
         </CardContent>
@@ -90,7 +92,7 @@ const PostCard: React.FC<Props> = (props: Props) => {
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="body2" color="text.secondary">
-              {moment(props.time).fromNow()}
+              {moment(post.time).fromNow()}
             </Typography>
           </Grid>
           <Grid item>
@@ -100,7 +102,7 @@ const PostCard: React.FC<Props> = (props: Props) => {
                 icon={<BookmarkAddIcon />}
                 checkedIcon={<BookmarkIcon />}
                 color="default"
-                defaultChecked={props.isFavorite}
+                defaultChecked={post.isFavorite}
               />
             )}
             <IconButton aria-label="share the post">
