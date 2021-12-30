@@ -10,6 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Logo from './Logo';
 import MenuProfile from './MenuProfile';
 import PopoverNotifications from './PopoverNotifications';
+import PopoverSettings from './PopoverSettings';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -33,6 +34,8 @@ const Header: React.FC = () => {
         <Button onClick={handleClickNewPost}>New Post</Button>
         <Box mx={1} />
         {isAuthenticated && <PopoverNotifications />}
+        <Box mx={1} />
+        {isAuthenticated && <PopoverSettings />}
         <Box mx={1} />
         <MenuProfile />
       </Toolbar>
