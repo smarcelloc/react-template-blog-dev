@@ -33,9 +33,3 @@ export interface NotificationProps {
   type: string;
   createdAt: number;
 }
-
-export interface FollowerProps {
-  id: number;
-  user: UserProps;
-  following: boolean;
-}
