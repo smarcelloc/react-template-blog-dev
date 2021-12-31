@@ -28,6 +28,10 @@ const Settings: React.FC = () => {
     setAnchorEl(null);
   };
 
+  const handleSettingsDarkMode = () => {
+    context.saveSettings({ darkMode: !context.settings.darkMode });
+  };
+
   return (
     <div>
       <IconButton
@@ -60,11 +64,11 @@ const Settings: React.FC = () => {
           <ListItem>
             <FormGroup>
               <FormControlLabel
-                onChange={() =>
-                  context.saveSettings({ darkMode: !context.settings.darkMode })
-                }
                 control={
-                  <Switch checked={context.settings.darkMode ?? false} />
+                  <Switch
+                    onChange={handleSettingsDarkMode}
+                    checked={context.settings.darkMode ?? false}
+                  />
                 }
                 label="Theme Dark"
               />

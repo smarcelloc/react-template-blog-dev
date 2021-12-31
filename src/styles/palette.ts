@@ -11,8 +11,8 @@ const paletteTheme = (isDark: boolean = false): PaletteOptions => {
 const paletteDark: PaletteOptions = {
   mode: 'dark',
   primary: {
-    main: colors.indigo.A200,
-    light: colors.indigo.A100,
+    main: colors.indigo.A100,
+    light: colors.indigo[300],
     dark: colors.indigo.A400,
   },
   secondary: {
