@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
 import Header from '../components/Header';
+import NewPostFab from '../components/NewPostFab';
 import RequireAuth from '../components/router/RequireAuth';
 import Page404 from './404';
 import Feeds from './Feeds';
@@ -45,6 +46,7 @@ const Home: React.FC = () => {
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Box>
+      <NewPostFab />
     </>
   );
 };
