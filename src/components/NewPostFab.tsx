@@ -7,6 +7,8 @@ import Fab from '@mui/material/Fab';
 
 import AddIcon from '@mui/icons-material/Add';
 
+import HideOnScroll from './transitions/HideOnScroll';
+
 const MyFab = styled(Fab)({
   position: 'fixed',
   bottom: 20,
@@ -31,9 +33,14 @@ const NewPostFab: React.FC = () => {
   return (
     <>
       {pathname !== '/post/new' && (
-        <MyFab onClick={handleClick} color="primary" aria-label="add new post">
-          <AddIcon />
-        </MyFab>
+        <HideOnScroll appear={false} direction="up">
+          <MyFab
+            onClick={handleClick}
+            color="primary"
+            aria-label="add new post">
+            <AddIcon />
+          </MyFab>
+        </HideOnScroll>
       )}
     </>
   );
