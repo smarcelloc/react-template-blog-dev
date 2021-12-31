@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import RequireAuth from './components/router/RequireAuth';
+import GuestAuth from './components/router/GuestAuth';
 import ScrollToTop from './components/router/ScrollToTop';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -17,9 +17,9 @@ const App: React.FC = () => {
         <Route
           path="/login/*"
           element={
-            <RequireAuth to="/">
+            <GuestAuth to="/">
               <Login />
-            </RequireAuth>
+            </GuestAuth>
           }
         />
       </Routes>

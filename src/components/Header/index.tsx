@@ -32,10 +32,19 @@ const Header: React.FC = () => {
         <Logo />
         <Box flexGrow={1} />
         <Button onClick={handleClickNewPost}>New Post</Button>
-        <Box mx={1} />
-        {isAuthenticated && <Notifications />}
-        <Box mx={1} />
-        {isAuthenticated && <Settings />}
+
+        {isAuthenticated && (
+          <>
+            <Box mx={1} />
+            <Notifications />
+          </>
+        )}
+        {isAuthenticated && (
+          <>
+            <Box mx={1} />
+            <Settings />
+          </>
+        )}
         <Box mx={1} />
         <MenuProfile />
       </Toolbar>

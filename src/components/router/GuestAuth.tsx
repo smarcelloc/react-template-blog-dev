@@ -7,14 +7,14 @@ interface Props extends NavigateProps {
   children: React.ReactNode;
 }
 
-const RequireAuth: React.FC<Props> = ({ children, ...rest }: Props) => {
+const GuestAuth: React.FC<Props> = ({ children, ...rest }: Props) => {
   const isAuth = authService.isAuthenticated();
 
-  if (!isAuth) {
+  if (isAuth) {
     return <Navigate {...rest} />;
   }
 
   return <>{children}</>;
 };
 
-export default RequireAuth;
+export default GuestAuth;
