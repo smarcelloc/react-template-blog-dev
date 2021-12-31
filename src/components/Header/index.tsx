@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Hidden from '@mui/material/Hidden';
 import Toolbar from '@mui/material/Toolbar';
 
 import Logo from './Logo';
@@ -31,7 +32,9 @@ const Header: React.FC = () => {
       <Toolbar>
         <Logo />
         <Box flexGrow={1} />
-        <Button onClick={handleClickNewPost}>New Post</Button>
+        <Hidden smDown>
+          <Button onClick={handleClickNewPost}>New Post</Button>
+        </Hidden>
 
         {isAuthenticated && (
           <>
