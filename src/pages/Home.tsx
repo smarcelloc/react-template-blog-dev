@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
+import Hidden from '@mui/material/Hidden';
 
 import Header from '../components/Header';
 import NewPostFab from '../components/NewPostFab';
@@ -46,7 +47,9 @@ const Home: React.FC = () => {
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Box>
-      <NewPostFab />
+      <Hidden smUp>
+        <NewPostFab />
+      </Hidden>
     </>
   );
 };
