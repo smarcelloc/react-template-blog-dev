@@ -16,7 +16,6 @@ const maxGenerate = {
 };
 
 const imageAvatar = [
-  require('../assets/img/avatar/01.jpg'),
   require('../assets/img/avatar/02.jpg'),
   require('../assets/img/avatar/03.jpg'),
   require('../assets/img/avatar/04.jpg'),
@@ -37,7 +36,7 @@ const userCurrent: UserProps = {
   username: 'johnjoe12',
   email: 'john@example.com',
   password: 'password@123',
-  avatar: imageAvatar[0],
+  avatar: require('../assets/img/avatar/01.jpg'),
   joinedIn: '06 de jan, 2020',
   work: 'Software developer',
   totalPost: 30,
@@ -45,68 +44,43 @@ const userCurrent: UserProps = {
 
 users.push(userCurrent);
 
-for (let i = 0; i < maxGenerate.users; i++) {
-  const user: UserProps = {
+for (let i = 1; i < maxGenerate.users; i++) {
+  users.push({
     id: 2 + i,
     name: faker.name.findName(),
     username: faker.unique(faker.internet.userName),
     email: faker.internet.email(),
     password: faker.internet.password(8),
-    avatar: imageAvatar[1 + i] ?? '',
+    avatar: faker.random.arrayElement(imageAvatar),
     joinedIn: faker.date.between('2018-01-01', '2021-01-05'),
     work: faker.company.companyName(),
     totalPost: faker.datatype.number({ min: 1, max: 100 }),
-  };
-
-  users.push(user);
+  });
 }
 
 const tags: TagsProps[] = [];
 for (let i = 1; i < maxGenerate.tags; i++) {
-  const tag: TagsProps = {
+  tags.push({
     id: i,
     title: faker.unique(faker.git.branch),
-  };
-
-  tags.push(tag);
+  });
 }
 
 const posts: PostProps[] = [];
 for (let i = 1; i < maxGenerate.posts; i++) {
-  //const postTags: TagsProps[] = [];
-
-  // for (
-  //   let i = 0;
-  //   i < faker.datatype.number({ min: 1, max: maxGenerate.tags });
-  //   i++
-  // ) {
-  //   const tag =
-  //     tags[
-  //       faker.datatype.number({
-  //         min: 0,
-  //         max: maxGenerate.tags,
-  //       })
-  //     ];
-
-  //   postTags.push(tag);
-  // }
-
-  const post: PostProps = {
+  posts.push({
     id: i,
     title: faker.lorem.sentences(2),
-    image:
-      imagePost[faker.datatype.number({ min: 0, max: imagePost.length - 1 })],
+    image: faker.random.arrayElement(imagePost),
     content: contentMarkdown,
-    author: users[faker.datatype.number({ min: 0, max: maxGenerate.users })],
+    author: faker.random.arrayElement(users),
     time: moment()
       .subtract(faker.datatype.number({ min: 1, max: 370 }), 'days')
       .toDate()
       .getTime(),
     isFavorite: faker.datatype.boolean(),
-    tags: [],
-  };
-
-  posts.push(post);
+    tags: faker.random.arrayElements(tags),
+  });
 }
 
 const notifications: NotificationProps[] = [
@@ -139,5 +113,7 @@ const notifications: NotificationProps[] = [
     createdAt: moment().subtract(3, 'days').toDate().getTime(),
   },
 ];
+
+console.log(posts);
 
 export { users, notifications, tags, posts, userCurrent };

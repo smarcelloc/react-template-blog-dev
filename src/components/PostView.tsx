@@ -52,9 +52,9 @@ const PostView: React.FC<Props> = ({ post }: Props) => {
       </Grid>
 
       {post.tags &&
-        post.tags.map((tag, idx) => (
-          <Link href="#" key={idx} mr={2}>
-            {tag}
+        post.tags.map(({ title, id }) => (
+          <Link href="#" key={id} mr={2}>
+            {title}
           </Link>
         ))}
 
