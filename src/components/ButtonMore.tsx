@@ -8,6 +8,9 @@ const MyButton = styled(Button)(({ theme }) => ({
   borderTopRightRadius: 0,
   borderTop: `1px solid ${theme.palette?.divider}`,
   background: 'inherit',
+  '&:hover': {
+    background: theme.palette.divider,
+  },
 }));
 
 interface Props extends Omit<ButtonProps, 'color' | 'fullWidth'> {}
