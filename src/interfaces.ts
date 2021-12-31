@@ -5,7 +5,7 @@ export interface UserProps {
   email: string;
   password?: string;
   avatar?: string;
-  joinedIn?: string;
+  joinedIn?: string | Date;
   work?: string;
   totalPost?: number;
 }
@@ -21,8 +21,8 @@ export interface PostProps {
   time: number;
   content?: string;
   image: string;
-  author: Pick<UserProps, 'name' | 'avatar'>;
-  tags?: Array<string>;
+  author: UserProps;
+  tags?: Array<TagsProps>;
   isFavorite: boolean;
 }
 
