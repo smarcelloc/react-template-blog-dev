@@ -33,6 +33,10 @@ const TagsBar: React.FC = () => {
     getTags();
   }, [getTags]);
 
+  if (tags.length === 0) {
+    return <></>;
+  }
+
   return (
     <Paper>
       {!isAuthenticated && (
