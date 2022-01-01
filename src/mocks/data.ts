@@ -10,15 +10,18 @@ import {
 import contentMarkdown from './content';
 
 const maxGenerate = {
-  users: 4,
-  tags: 10,
-  posts: 30,
+  users: 0,
+  tags: 0,
+  posts: 0,
 };
 
 const imageAvatar = [
   require('../assets/img/avatar/02.jpg'),
   require('../assets/img/avatar/03.jpg'),
   require('../assets/img/avatar/04.jpg'),
+  require('../assets/img/avatar/05.jpg'),
+  require('../assets/img/avatar/06.jpg'),
+  require('../assets/img/avatar/07.jpg'),
 ];
 const imagePost = [
   require('../assets/img/post/01.webp'),
@@ -26,50 +29,56 @@ const imagePost = [
   require('../assets/img/post/03.webp'),
   require('../assets/img/post/04.webp'),
   require('../assets/img/post/05.webp'),
+  require('../assets/img/post/06.webp'),
+  require('../assets/img/post/07.webp'),
 ];
 
 const users: UserProps[] = [];
 
 const userCurrent: UserProps = {
-  id: 1,
+  id: '52fd2a40-f9ae-4ea5-90c6-ed4cf427d199',
   name: 'John Joe',
   username: 'johnjoe12',
   email: 'john@example.com',
   password: 'password@123',
   avatar: require('../assets/img/avatar/01.jpg'),
-  joinedIn: '06 de jan, 2020',
+  joinedIn: 1622052975275,
   work: 'Software developer',
   totalPost: 30,
 };
 
 users.push(userCurrent);
 
-for (let i = 1; i < maxGenerate.users; i++) {
+for (let i = 0; i < maxGenerate.users; i++) {
   users.push({
-    id: 2 + i,
+    id: faker.datatype.uuid(),
     name: faker.name.findName(),
     username: faker.unique(faker.internet.userName),
     email: faker.internet.email(),
     password: faker.internet.password(8),
     avatar: faker.random.arrayElement(imageAvatar),
-    joinedIn: faker.date.between('2018-01-01', '2021-01-05'),
+    bio: faker.lorem.paragraph(),
+    joinedIn: moment()
+      .subtract(faker.datatype.number({ min: 30, max: 1000 }), 'days')
+      .toDate()
+      .getTime(),
     work: faker.company.companyName(),
     totalPost: faker.datatype.number({ min: 1, max: 100 }),
   });
 }
 
 const tags: TagsProps[] = [];
-for (let i = 1; i < maxGenerate.tags; i++) {
+for (let i = 0; i < maxGenerate.tags; i++) {
   tags.push({
-    id: i,
+    id: faker.datatype.uuid(),
     title: faker.unique(faker.git.branch),
   });
 }
 
 const posts: PostProps[] = [];
-for (let i = 1; i < maxGenerate.posts; i++) {
+for (let i = 0; i < maxGenerate.posts; i++) {
   posts.push({
-    id: i,
+    id: faker.datatype.uuid(),
     title: faker.lorem.sentences(2),
     image: faker.random.arrayElement(imagePost),
     content: contentMarkdown,
@@ -113,7 +122,5 @@ const notifications: NotificationProps[] = [
     createdAt: moment().subtract(3, 'days').toDate().getTime(),
   },
 ];
-
-console.log(posts);
 
 export { users, notifications, tags, posts, userCurrent };

@@ -22,7 +22,7 @@ const Profile: React.FC = () => {
   const getPosts = useCallback(async () => {
     if (user) {
       const response = await request.get<RequestProps>('/api/user/posts', {
-        params: { user_id: `${user.id}` },
+        params: { user_id: user.id },
       });
       setPosts(response.data.posts);
     }

@@ -4,6 +4,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
+import moment from 'moment';
+
 import { UserProps } from '../../interfaces';
 
 interface Props {
@@ -41,7 +43,7 @@ const AccountInfo: React.FC<Props> = ({ user }: Props) => {
           Registration Date
         </Typography>
         <Typography gutterBottom variant="body1">
-          {user.joinedIn}
+          {moment(user.joinedIn).format('ll')}
         </Typography>
       </CardContent>
     </Card>

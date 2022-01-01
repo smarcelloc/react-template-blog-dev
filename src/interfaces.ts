@@ -1,22 +1,23 @@
 export interface UserProps {
-  id: number;
+  id: string;
   name: string;
   username: string;
   email: string;
   password?: string;
   avatar?: string;
-  joinedIn?: string | Date;
+  bio?: string;
+  joinedIn?: number;
   work?: string;
   totalPost?: number;
 }
 
 export interface TagsProps {
-  id: number;
+  id: string;
   title: string;
 }
 
 export interface PostProps {
-  id: number;
+  id: string;
   title: string;
   time: number;
   content?: string;
