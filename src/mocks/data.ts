@@ -10,9 +10,9 @@ import {
 import contentMarkdown from './content';
 
 const maxGenerate = {
-  users: 0,
-  tags: 0,
-  posts: 0,
+  users: 5,
+  tags: 10,
+  posts: 25,
 };
 
 const imageAvatar = [
@@ -79,7 +79,7 @@ const posts: PostProps[] = [];
 for (let i = 0; i < maxGenerate.posts; i++) {
   posts.push({
     id: faker.datatype.uuid(),
-    title: faker.lorem.sentences(2),
+    title: faker.lorem.sentences(1),
     image: faker.random.arrayElement(imagePost),
     content: contentMarkdown,
     author: faker.random.arrayElement(users),

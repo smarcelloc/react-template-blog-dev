@@ -4,7 +4,7 @@ import {
   Prism as SyntaxHighlighter,
   SyntaxHighlighterProps,
 } from 'react-syntax-highlighter';
-import theme from 'react-syntax-highlighter/dist/esm/styles/prism/atom-dark';
+import theme from 'react-syntax-highlighter/dist/esm/styles/prism/nord';
 
 import { styled } from '@mui/material';
 

@@ -5,6 +5,7 @@ import { Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
+import MyLink from '../../components/Link';
 import PostCard from '../../components/PostCard';
 import { PostProps } from '../../interfaces';
 import request from '../../utils/request';
@@ -52,6 +53,12 @@ const Profile: React.FC = () => {
             <Typography gutterBottom component="h2" variant="h4">
               My Posts
             </Typography>
+            {posts.length === 0 && (
+              <>
+                You haven't registered any posts yet.{' '}
+                <MyLink to="/post/new">Let's create a new post.</MyLink>
+              </>
+            )}
           </Grid>
           {posts.map((post) => (
             <Grid item key={post.id} xs={12} sm={6}>
