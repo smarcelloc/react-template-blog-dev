@@ -14,7 +14,7 @@ import SignIn from './SignIn';
 
 const Login: React.FC = () => {
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" my={500}>
+    <Box display="flex" flexDirection="column" alignItems="center" my={5}>
       <Avatar
         sx={{ bgcolor: (theme) => theme.palette.primary.main }}
         aria-label="authentication icon">
