@@ -39,7 +39,7 @@ const MenuProfile: React.FC = () => {
   const handleSignOut = async () => {
     handleClose();
     await dispatch(accountAction.signOut());
-    navigate('/');
+    navigate('/login');
   };
 
   const handleProfile = () => {
