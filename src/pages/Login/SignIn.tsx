@@ -53,6 +53,10 @@ const SignIn: React.FC = () => {
         setErrors({ submit: message });
         setStatus({ success: false });
         setSubmitting(false);
+
+        errorMessageRef.current?.scrollIntoView();
+        const marginTop = 20;
+        window.scrollTo({ top: window.scrollY - marginTop, left: 0 });
       }
     },
   });

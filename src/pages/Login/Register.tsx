@@ -45,11 +45,14 @@ const Register: React.FC = () => {
     }),
     onSubmit: (values, { setStatus, setSubmitting, setErrors }) => {
       const message = 'Ops! We cannot save any data as it is a demo site.';
-      errorMessageRef.current?.scrollIntoView();
 
       setErrors({ submit: message });
       setStatus({ success: false });
       setSubmitting(false);
+
+      errorMessageRef.current?.scrollIntoView();
+      const marginTop = 20;
+      window.scrollTo({ top: window.scrollY - marginTop, left: 0 });
     },
   });
 
