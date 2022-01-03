@@ -1,4 +1,4 @@
-import { PostProps } from '../interfaces';
+import { PostProps } from '../entities';
 import mock from '../utils/mock';
 import { posts, userCurrent as user } from './data';
 

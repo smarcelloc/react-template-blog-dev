@@ -3,7 +3,7 @@ import * as React from 'react';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 import { useSettings } from '../context/SettingsContext';
-import { SettingsProps } from '../interfaces';
+import { SettingsProps } from '../entities';
 import componentsTheme from './components';
 import paletteTheme from './palette';
 

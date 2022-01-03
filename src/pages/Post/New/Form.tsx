@@ -9,7 +9,7 @@ import { useFormikContext } from 'formik';
 
 import { FormValue } from '.';
 import ImageForm from '../../../components/ImageForm';
-import { TagsProps } from '../../../interfaces';
+import { TagsProps } from '../../../entities';
 import request from '../../../utils/request';
 
 interface RequestProps {

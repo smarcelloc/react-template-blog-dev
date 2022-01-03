@@ -6,7 +6,7 @@ import {
   PostProps,
   TagsProps,
   UserProps,
-} from '../interfaces';
+} from '../entities';
 import contentMarkdown from './content';
 
 const maxGenerate = {

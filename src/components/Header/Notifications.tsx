@@ -19,7 +19,7 @@ import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 import PostAddIcon from '@mui/icons-material/PostAddOutlined';
 import VisibilityIcon from '@mui/icons-material/VisibilityOutlined';
 
-import { NotificationProps } from '../../interfaces';
+import { NotificationProps } from '../../entities';
 import notificationsAction from '../../store/actions/notificationsAction';
 import ButtonMore from '../ButtonMore';
 

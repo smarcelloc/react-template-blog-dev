@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 
 import moment from 'moment';
 
-import { UserProps } from '../../interfaces';
+import { UserProps } from '../../entities';
 
 interface Props {
   user: UserProps;

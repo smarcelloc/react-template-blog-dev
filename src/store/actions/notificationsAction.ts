@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import { NotificationProps } from '../../interfaces';
+import { NotificationProps } from '../../entities';
 import request from '../../utils/request';
 
 interface TypeAction {

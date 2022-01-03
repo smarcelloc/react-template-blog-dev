@@ -1,4 +1,4 @@
-import { SettingsProps } from '../interfaces';
+import { SettingsProps } from '../entities';
 
 const SETTINGS_KEY = 'settingsApp';
 

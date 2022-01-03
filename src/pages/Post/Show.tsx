@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import PostView from '../../components/PostView';
-import { PostProps } from '../../interfaces';
+import { PostProps } from '../../entities';
 import request from '../../utils/request';
 
 interface RequestProps {

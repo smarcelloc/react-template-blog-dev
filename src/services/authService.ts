@@ -1,4 +1,4 @@
-import { UserProps } from '../interfaces';
+import { UserProps } from '../entities';
 import request from '../utils/request';
 
 interface RequestProps {

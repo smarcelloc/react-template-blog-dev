@@ -8,7 +8,7 @@ import Hidden from '@mui/material/Hidden';
 import PostCard from '../components/PostCard';
 import ProfileBar from '../components/ProfileBar';
 import TagsBar from '../components/TagsBar';
-import { PostProps } from '../interfaces';
+import { PostProps } from '../entities';
 import request from '../utils/request';
 
 interface RequestProps {

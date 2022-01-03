@@ -3,7 +3,7 @@ import * as React from 'react';
 import { styled, Theme } from '@mui/material';
 import Avatar, { AvatarProps } from '@mui/material/Avatar';
 
-import { UserProps } from '../../interfaces';
+import { UserProps } from '../../entities';
 import stringToColor from './stringToColor';
 
 interface PropsAvatarStyled extends AvatarProps {

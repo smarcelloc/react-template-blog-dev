@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 
 import MyLink from '../../components/Link';
 import PostCard from '../../components/PostCard';
-import { PostProps } from '../../interfaces';
+import { PostProps } from '../../entities';
 import request from '../../utils/request';
 import AccountInfo from './AccountInfo';
 import AccountProfile from './AccountProfile';

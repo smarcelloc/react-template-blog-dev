@@ -21,7 +21,7 @@ import ShareIcon from '@mui/icons-material/ShareOutlined';
 
 import moment from 'moment';
 
-import { PostProps } from '../interfaces';
+import { PostProps } from '../entities';
 import AvatarProfile from './AvatarProfile';
 
 const MyCard = styled(Card)({

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import moment from 'moment';
 
 import Markdown from '../components/Markdown';
-import { PostProps } from '../interfaces';
+import { PostProps } from '../entities';
 import AvatarProfile from './AvatarProfile';
 
 interface Props {

@@ -1,4 +1,4 @@
-import { TagsProps } from '../interfaces';
+import { TagsProps } from '../entities';
 import mock from '../utils/mock';
 import { tags } from './data';
 

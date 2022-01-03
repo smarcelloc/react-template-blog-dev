@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import { UserProps } from '../../interfaces';
+import { UserProps } from '../../entities';
 import authService from '../../services/authService';
 
 interface TypeAction {

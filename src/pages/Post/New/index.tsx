@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 
 import Tab from '../../../components/Tab';
 import TabPanel from '../../../components/TabPanel';
-import { TagsProps } from '../../../interfaces';
+import { TagsProps } from '../../../entities';
 import Form from './Form';
 import Preview from './Preview';
 

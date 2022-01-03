@@ -10,7 +10,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-import { TagsProps } from '../interfaces';
+import { TagsProps } from '../entities';
 import request from '../utils/request';
 import ButtonMore from './ButtonMore';
 

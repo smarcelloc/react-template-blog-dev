@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SettingsProps } from '../interfaces';
+import { SettingsProps } from '../entities';
 import settingsService from '../services/settingsService';
 
 interface Props {

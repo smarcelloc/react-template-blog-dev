@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 import AvatarProfile from '../../components/AvatarProfile';
-import { UserProps } from '../../interfaces';
+import { UserProps } from '../../entities';
 
 interface Props {
   user: UserProps;
