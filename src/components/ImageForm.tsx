@@ -1,13 +1,28 @@
 import * as React from 'react';
-import { useDropzone } from 'react-dropzone';
+import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
 
 import { styled } from '@mui/material';
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 import Button, { ButtonProps } from '@mui/material/Button';
+import FormHelperText from '@mui/material/FormHelperText';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
-interface Props extends ButtonProps {
+interface Props {
   image: ArrayBuffer | string | null;
-  setImage: React.Dispatch<React.SetStateAction<ArrayBuffer | string | null>>;
+  setFieldValue: (
+    field: string,
+    value: ArrayBuffer | string | null,
+    shouldValidate?: boolean
+  ) => void;
+  name: string;
+  id?: string;
+  error?: boolean;
+  helperText?: string;
+  imageAlt?: string;
+  optionsImage?: Omit<DropzoneOptions, 'onDrop'>;
+  boxProps?: BoxProps;
+  buttonProps?: ButtonProps;
 }
 
 const MyImage = styled('img')(({ theme }) => ({
@@ -17,39 +32,79 @@ const MyImage = styled('img')(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
 }));
 
-const ImageForm: React.FC<Props> = ({ image, setImage, ...rest }: Props) => {
-  const onDrop = React.useCallback(
-    (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      const reader = new FileReader();
+const ImageForm: React.FC<Props> = ({
+  image,
+  setFieldValue,
+  error,
+  helperText,
+  boxProps,
+  buttonProps,
+  optionsImage,
+  imageAlt,
+  name,
+  id,
+}: Props) => {
+  const [errorMessage, setErrorMessage] = React.useState<Array<string>>([]);
 
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        const base64data = reader.result;
-        setImage(base64data);
-      };
+  const onDrop = React.useCallback(
+    (acceptedFiles: any, rejectedFiles: FileRejection[]) => {
+      try {
+        const file = acceptedFiles[0];
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          const base64data = reader.result;
+          setFieldValue('image', base64data);
+        };
+      } catch (error: any) {
+        const listErrorMessage: Array<string> = [];
+
+        rejectedFiles.forEach((files) => {
+          files.errors.forEach((error) => {
+            listErrorMessage.push(error.message);
+          });
+        });
+
+        setErrorMessage(listErrorMessage);
+      }
     },
-    [setImage]
+    [setFieldValue]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    multiple: false,
-    accept: 'image/*',
+    ...optionsImage,
   });
 
   return (
-    <div>
+    <Box {...boxProps}>
       {image && (
         <Box display="flex" justifyContent="center" mb={2}>
-          <MyImage src={image.toString()} alt="background of post" />
+          <MyImage src={image.toString()} alt={imageAlt} />
         </Box>
       )}
       <div {...getRootProps()}>
-        <input {...getInputProps()} />
-        <Button {...rest}>Image upload</Button>
+        <input {...getInputProps()} id={id} name={name} />
+        {error || errorMessage.length > 0 ? (
+          <Button {...buttonProps} color="error">
+            Image upload
+          </Button>
+        ) : (
+          <Button {...buttonProps}>Image upload</Button>
+        )}
       </div>
-    </div>
+      {error && <FormHelperText error={error}>{helperText}</FormHelperText>}
+      {errorMessage && (
+        <List disablePadding>
+          {errorMessage.map((message, idx) => (
+            <ListItem key={idx}>
+              <FormHelperText error>- {message}</FormHelperText>
+            </ListItem>
+          ))}
+        </List>
+      )}
+    </Box>
   );
 };
 

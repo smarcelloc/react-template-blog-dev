@@ -3,9 +3,11 @@ import * as React from 'react';
 import { styled } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
+import { useFormikContext } from 'formik';
+
+import { FormValue } from '.';
 import MyLink from '../../../components/Link';
 import Markdown from '../../../components/Markdown';
-import { usePost } from '../../../context/PostContext';
 
 const PostImage = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
@@ -15,27 +17,27 @@ const PostImage = styled('img')(({ theme }) => ({
 }));
 
 const Preview: React.FC = () => {
-  const context = usePost();
-
+  const formik = useFormikContext<FormValue>();
   return (
     <>
-      {context.image && (
-        <PostImage src={context.image.toString()} alt="post image" />
+      {formik.values.image && (
+        <PostImage src={formik.values.image.toString()} alt="post image" />
       )}
 
-      {context.title && (
+      {formik.values.title && (
         <Typography gutterBottom variant="h3" component="h2">
-          {context.title}
+          {formik.values.title}
         </Typography>
       )}
 
-      {context.tags.map(({ title }: { title: string }, idx: number) => (
-        <MyLink to="#" key={idx} material={{ mr: 2 }}>
-          {title}
-        </MyLink>
-      ))}
+      {formik.values.tags &&
+        formik.values.tags.map(({ title }: { title: string }, idx: number) => (
+          <MyLink to="#" key={idx} material={{ mr: 2 }}>
+            {title}
+          </MyLink>
+        ))}
 
-      {context.markdown && <Markdown text={context.markdown} />}
+      {formik.values.content && <Markdown text={formik.values.content} />}
     </>
   );
 };

@@ -5,8 +5,10 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
+import { useFormikContext } from 'formik';
+
+import { FormValue } from '.';
 import ImageForm from '../../../components/ImageForm';
-import { usePost } from '../../../context/PostContext';
 import { TagsProps } from '../../../interfaces';
 import request from '../../../utils/request';
 
@@ -15,7 +17,7 @@ interface RequestProps {
 }
 
 const Form: React.FC = () => {
-  const context = usePost();
+  const formik = useFormikContext<FormValue>();
   const [optionsTags, setOptionsTags] = React.useState<TagsProps[]>([]);
 
   const getOptionsTags = React.useCallback(async () => {
@@ -28,14 +30,27 @@ const Form: React.FC = () => {
   }, [getOptionsTags]);
 
   return (
-    <form>
+    <>
       <ImageForm
-        fullWidth
-        size="large"
-        variant="outlined"
-        image={context.image}
-        setImage={context.setImage}
-        sx={{ mb: (theme) => theme.spacing(1) }}
+        id="image"
+        name="image"
+        buttonProps={{
+          fullWidth: true,
+          size: 'large',
+          variant: 'outlined',
+          color: 'info',
+        }}
+        image={formik.values.image}
+        setFieldValue={formik.setFieldValue}
+        error={!!formik.errors.image}
+        helperText={formik.errors.image}
+        boxProps={{ mb: 1 }}
+        imageAlt="cover of post"
+        optionsImage={{
+          accept: 'image/*',
+          multiple: false,
+          maxSize: 54525952,
+        }}
       />
 
       <TextField
@@ -44,11 +59,12 @@ const Form: React.FC = () => {
         label="Title"
         variant="outlined"
         fullWidth
-        required
         type="text"
         margin="normal"
-        defaultValue={context.title}
-        onChange={(event) => context.setTitle(event.target.value)}
+        value={formik.values.title}
+        onChange={formik.handleChange}
+        error={!!formik.errors.title}
+        helperText={formik.errors.title}
       />
 
       <Autocomplete
@@ -56,8 +72,9 @@ const Form: React.FC = () => {
         options={optionsTags}
         getOptionLabel={(tag) => tag.title}
         filterSelectedOptions
-        value={context.tags}
-        onChange={(event, values) => context.setTags(values)}
+        isOptionEqualToValue={(option, value) => option.id === value.id}
+        value={formik.values.tags}
+        onChange={(e, value) => formik.setFieldValue('tags', value)}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -70,17 +87,18 @@ const Form: React.FC = () => {
       />
 
       <TextField
-        id="markdown"
-        name="markdown"
+        id="content"
+        name="content"
         label="MarkDown Editor"
         variant="outlined"
         fullWidth
-        required
         multiline
         rows={8}
         margin="normal"
-        value={context.markdown}
-        onChange={(event) => context.setMarkdown(event.target.value)}
+        value={formik.values.content}
+        onChange={formik.handleChange}
+        error={!!formik.errors.content}
+        helperText={formik.errors.content}
       />
 
       <Grid
@@ -95,12 +113,12 @@ const Form: React.FC = () => {
           </Button>
         </Grid>
         <Grid item>
-          <Button variant="contained" color="secondary">
+          <Button type="submit" variant="contained" color="secondary">
             Publish
           </Button>
         </Grid>
       </Grid>
-    </form>
+    </>
   );
 };
 
