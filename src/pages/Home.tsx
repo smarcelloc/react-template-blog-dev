@@ -28,14 +28,7 @@ const Home: React.FC = () => {
               </RequireAuth>
             }
           />
-          <Route
-            path="/post/:id"
-            element={
-              <RequireAuth to="/404">
-                <PostShow />
-              </RequireAuth>
-            }
-          />
+          <Route path="/post/:id" element={<PostShow />} />
           <Route
             path="/profile"
             element={
