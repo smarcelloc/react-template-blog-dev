@@ -48,8 +48,8 @@ const Profile: React.FC = () => {
             <AccountInfo user={user} />
           </Grid>
         </Grid>
-        <Grid item container md={8} spacing={2}>
-          <Grid item xs={12}>
+        <Grid item container md={8} spacing={2} direction="column">
+          <Grid item width="100%">
             <Typography gutterBottom component="h2" variant="h4">
               My Posts
             </Typography>
@@ -60,11 +60,13 @@ const Profile: React.FC = () => {
               </>
             )}
           </Grid>
-          {posts.map((post) => (
-            <Grid item key={post.id} xs={12} sm={6}>
-              <PostCard post={post} />
-            </Grid>
-          ))}
+          <Grid item container spacing={2}>
+            {posts.map((post) => (
+              <Grid item key={post.id} xs={12} sm={6}>
+                <PostCard post={post} />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     </Container>
