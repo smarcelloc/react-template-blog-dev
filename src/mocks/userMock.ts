@@ -1,6 +1,10 @@
 import { PostProps } from '../entities';
 import mock from '../utils/mock';
-import { posts, userCurrent as user } from './data';
+import data from './data.json';
+
+const { users, posts } = data;
+
+const user = users[0];
 
 mock.onPost('/api/auth').reply((req) => {
   const { email, password } = JSON.parse(req.data);

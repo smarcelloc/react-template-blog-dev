@@ -1,6 +1,8 @@
 import { TagsProps } from '../entities';
 import mock from '../utils/mock';
-import { tags } from './data';
+import data from './data.json';
+
+const { tags } = data;
 
 mock.onGet('/api/tags').reply(200, { tags });
 
