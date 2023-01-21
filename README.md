@@ -7,6 +7,11 @@ I have created a blog template specifically designed for developers using the Re
 <p align="center" width="100%">
   <img src="screen-app-template.png" alt="screen app" />
 <p>
+  
+<br>
+<p align="center" width="100%">
+  <a href="https://react-template-blog-dev.vercel.app/"> View Demo </a>
+</p>
 
 # Description
 
