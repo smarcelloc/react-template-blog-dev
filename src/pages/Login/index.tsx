@@ -37,7 +37,7 @@ const Login: React.FC = () => {
           Copyright © {new Date().getFullYear()} &nbsp;
           <Link
             target="_blank"
-            href="https://github.com/smarcelloc/connect-dev">
+            href="https://github.com/smarcelloc/react-template-blog-dev">
             Connect DEV
           </Link>
         </Typography>
